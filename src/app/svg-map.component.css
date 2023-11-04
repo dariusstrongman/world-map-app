@@ -1,0 +1,15 @@
+/* svg-map.component.css */
+
+/* Add your CSS rules for the SVG map component here */
+svg {
+  width: 100%;
+  height: auto;
+}
+
+rect {
+  fill: blue;
+  stroke: pink;
+  stroke-width: 5;
+  fill-opacity: 0.1;
+  stroke-opacity: 0.9;
+}

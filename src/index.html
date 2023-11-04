@@ -1,13 +1,43 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
-  <title>WorldMapApp</title>
+  <title>WorldMapapp</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+
+    header {
+      background-color: #007bff;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+  </style>
 </head>
+
 <body>
-  <app-root></app-root>
+  <header>
+    <h1>WorldMap</h1>
+  </header>
+
+  <div class="container">
+    <app-root></app-root>
+  </div>
 </body>
+
 </html>
