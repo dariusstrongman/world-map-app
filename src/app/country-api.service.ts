@@ -11,12 +11,12 @@ export class CountryApiService {
   constructor(private http: HttpClient) { }
 
   getAllCountries(): Observable<any> {
-    const url = `${this.apiUrl}/?format=json`; // Append format=json query parameter
+    const url = `${this.apiUrl}/?format=json&per_page=300`; // Fetch all countries
     return this.http.get(url);
   }
 
   getCountryInfo(countryCode: string): Observable<any> {
-    const url = `${this.apiUrl}/${countryCode}?format=json`; // Append country code and format=json query parameter
+    const url = `${this.apiUrl}/${countryCode}?format=json`;
     return this.http.get(url);
   }
 }

@@ -1,10 +1,9 @@
-<!-- app.component.html -->
-
-<h1>WorldMap</h1>
-
-<nav>
-  <a routerLink="/" routerLinkActive="active">Home</a>
-  <a routerLink="/other" routerLinkActive="active">Other Component</a>
-</nav>
-
-<router-outlet></router-outlet>
+<!-- Assuming you have components named SvgMapComponent and CountryInfoComponent -->
+<div class="container">
+  <div class="map-column">
+    <app-svg-map (countrySelected)="onCountrySelected($event)"></app-svg-map>
+  </div>
+  <div class="info-column">
+    <app-country-info [country]="selectedCountry"></app-country-info>
+  </div>
+</div>

@@ -2,12 +2,12 @@
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-import { OtherComponent } from './other.component'; 
+import { HomePageComponent } from './home-page/home-page.component'; // Make sure this path is correct
 
 const routes: Routes = [
-  { path: '', component: AppComponent },
-  { path: 'other', component: OtherComponent },
+  { path: '', component: HomePageComponent }, // Use HomePageComponent for the root path
+  // { path: 'other', component: OtherComponent }, // Comment out or remove if OtherComponent does not exist
+  // ... other routes
 ];
 
 @NgModule({
@@ -15,4 +15,3 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
-
