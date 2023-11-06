@@ -11,6 +11,7 @@ import { CountryApiService } from './country-api.service';
     AppComponent,
     SvgMapComponent,
     CountryInfoComponent
+    // OtherComponent has been removed from declarations
   ],
   imports: [
     BrowserModule,
