@@ -5,15 +5,12 @@ import { AppComponent } from './app.component';
 import { SvgMapComponent } from './svg-map.component';
 import { CountryInfoComponent } from './country-info.component';
 import { CountryApiService } from './country-api.service';
-import { HomePageComponent } from './home-page/home-page.component'; 
 
 @NgModule({
   declarations: [
     AppComponent,
     SvgMapComponent,
-    CountryInfoComponent,
-    // Removed OtherComponent from declarations
-    HomePageComponent
+    CountryInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -23,4 +20,3 @@ import { HomePageComponent } from './home-page/home-page.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-

@@ -2,12 +2,10 @@
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomePageComponent } from './home-page/home-page.component'; // Make sure this path is correct
+import { HomePageComponent } from './home-page/home-page.component'; 
 
 const routes: Routes = [
-  { path: '', component: HomePageComponent }, // Use HomePageComponent for the root path
-  // { path: 'other', component: OtherComponent }, // Comment out or remove if OtherComponent does not exist
-  // ... other routes
+  { path: '', component: HomePageComponent }, 
 ];
 
 @NgModule({
