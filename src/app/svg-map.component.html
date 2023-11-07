@@ -1,11 +1,8 @@
-<svg width="800" height="600">
-  <ng-container *ngFor="let country of countries">
-    <path
-      [attr.d]="country.path"
-      [attr.fill]="country.color"
-      (mouseover)="onMouseOver(country.code)"
-      (mouseout)="onMouseOut(country.code)"
-      (click)="onClick(country.code)"
-    ></path>
-  </ng-container>
-</svg>
+<div>
+  <h2>Country List</h2>
+  <ul>
+    <li *ngFor="let country of countries">
+      Name: {{ country.name }}, Capital: {{ country.capital }}, Region: {{ country.region }}
+    </li>
+  </ul>
+</div>
