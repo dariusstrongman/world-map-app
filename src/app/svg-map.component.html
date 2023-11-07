@@ -1,8 +1,6 @@
-<div>
-  <h2>Country List</h2>
-  <ul>
-    <li *ngFor="let country of countries">
-      Name: {{ country.name }}, Capital: {{ country.capital }}, Region: {{ country.region }}
-    </li>
-  </ul>
+<div *ngIf="country">
+  <h2>{{ country.name }}</h2>
+  <p>Capital: {{ country.capital }}</p>
+  <p>Region: {{ country.region }}</p>
+  <!-- Display other country information here -->
 </div>

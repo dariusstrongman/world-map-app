@@ -6,5 +6,7 @@ import { Component, Input } from '@angular/core';
   //styleUrls: ['./country-info.component.css']
 })
 export class CountryInfoComponent {
-  @Input() country: any;
+  @Input() country: any; // This will receive the country data to display
+
+  // Rest of the component logic...
 }

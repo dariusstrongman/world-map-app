@@ -1,9 +1,11 @@
 <!-- Assuming you have components named SvgMapComponent and CountryInfoComponent -->
 <div class="container">
   <div class="map-column">
+    <!-- SvgMapComponent is responsible for displaying the map and emitting the selected country -->
     <app-svg-map (countrySelected)="onCountrySelected($event)"></app-svg-map>
   </div>
   <div class="info-column">
+    <!-- CountryInfoComponent should be used here to display the country information -->
     <app-country-info [country]="selectedCountry"></app-country-info>
   </div>
 </div>
