@@ -1,17 +1,37 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CountryApiService } from './country-api.service';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+    <div class="columns">
+      <div class="column">
+        <app-svg-map [countries]="countries" (countrySelected)="onCountrySelected($event)"></app-svg-map>
+      </div>
+      <div class="column">
+        <app-country-info [country]="selectedCountry"></app-country-info>
+      </div>
+    </div>
+  `
 })
-export class AppComponent {
-  countries = []; // This should be populated with the actual country data
-  selectedCountry: any = null; // This will hold the data for the selected country
+export class AppComponent implements OnInit {
+  title = 'world-map-app';
+  countries: any[] = [];
+  selectedCountry: any;
 
-  onCountrySelected(countryCode: string): void {
-    // Here you would find the country data based on the selected countryCode
-    // For example:
-    this.selectedCountry = this.countries.find(country => country.code === countryCode);
+  constructor(private countryApiService: CountryApiService) { }
+
+  ngOnInit(): void {
+    this.countryApiService.getAllCountries().subscribe(data => {
+      // Adjust this according to the actual data structure of your API response
+      this.countries = data;
+    });
+  }
+
+  onCountrySelected(countryCode: string) {
+    // Adjust this according to the actual data structure of your API response
+    this.countryApiService.getCountryInfo(countryCode).subscribe(data => {
+      this.selectedCountry = data;
+    });
   }
 }
