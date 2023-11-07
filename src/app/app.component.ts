@@ -22,14 +22,22 @@ export class AppComponent implements OnInit {
   constructor(private countryApiService: CountryApiService) { }
 
   ngOnInit(): void {
-    this.countryApiService.getAllCountries().subscribe(data => {
-      this.countries = data[1];
-    });
+    this.countryApiService.getAllCountries().subscribe(
+      data => {
+        console.log('Countries data:', data); // Debugging line
+        this.countries = data[1];
+      },
+      error => console.error('Error fetching countries:', error) // Error handling
+    );
   }
 
   onCountrySelected(countryCode: string) {
-    this.countryApiService.getCountryInfo(countryCode).subscribe(data => {
-      this.selectedCountry = data[1][0]; // Assuming the country data is in the second element of the response array
-    });
+    this.countryApiService.getCountryInfo(countryCode).subscribe(
+      data => {
+        console.log('Selected country data:', data); // Debugging line
+        this.selectedCountry = data[1][0]; // Assuming the country data is in the second element of the response array
+      },
+      error => console.error('Error fetching country info:', error) // Error handling
+    );
   }
 }

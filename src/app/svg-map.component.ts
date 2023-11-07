@@ -1,23 +1,33 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-svg-map',
-  templateUrl: './svg-map.component.html',
-  styleUrls: ['./svg-map.component.css']
+  template: `
+    <svg width="800" height="600">
+      <!-- Loop through countries and create paths for each country -->
+      <ng-container *ngFor="let country of countries">
+        <path
+          [attr.d]="country.path"
+          [attr.fill]="country.color"
+          (click)="onCountryClick(country.code)"
+        ></path>
+      </ng-container>
+    </svg>
+  `
 })
-export class SvgMapComponent {
+export class SvgMapComponent implements OnInit {
   @Input() countries: any[] = [];
   @Output() countrySelected: EventEmitter<string> = new EventEmitter<string>();
 
-  onMouseOver(countryCode: string): void {
-    // Handle mouse over event
+  constructor() { }
+
+  ngOnInit(): void {
+    // Initialize SVG map data or any other logic if needed
+    // Example: Fetch country data from a service and set the countries array
   }
 
-  onMouseOut(countryCode: string): void {
-    // Handle mouse out event
-  }
-
-  onClick(countryCode: string): void {
+  // Example method to handle click event on a country
+  onCountryClick(countryCode: string) {
     this.countrySelected.emit(countryCode);
   }
 }
