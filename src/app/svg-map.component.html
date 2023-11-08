@@ -1,6 +1,14 @@
-<div *ngIf="country">
-  <h2>{{ country.name }}</h2>
-  <p>Capital: {{ country.capital }}</p>
-  <p>Region: {{ country.region }}</p>
-  <!-- Display other country information here -->
+<!-- svg-map.component.html -->
+<div class="svg-map-container">
+  <!-- This is a simple example. You would replace this with your actual SVG map code. -->
+  <!-- Make sure to bind click events to your paths that call the selectCountry method in your SvgMapComponent. -->
+  <svg width="800" height="600">
+    <!-- Example of a country path in the SVG. Repeat for other countries. -->
+    <path
+      *ngFor="let country of countries"
+      [attr.d]="country.pathData"
+      (click)="selectCountry(country.code)"
+      [attr.fill]="country.color"
+    ></path>
+  </svg>
 </div>
