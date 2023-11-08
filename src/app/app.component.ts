@@ -35,7 +35,6 @@ export class AppComponent implements OnInit {
   }
 
   onCountrySelected(countryCode: string) {
-    // Fetch country info when a country is selected
     this.countryApiService.getCountryInfo(countryCode).subscribe(
       (data: any) => {
         // Assuming 'data' is the country object
@@ -46,4 +45,5 @@ export class AppComponent implements OnInit {
       }
     );
   }
+  
 }
