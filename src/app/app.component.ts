@@ -23,15 +23,17 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.countryApiService.getAllCountries().subscribe(data => {
-      // Adjust this according to the actual data structure of your API response
-      this.countries = data;
+      // This assumes that the countries data is in the second element of an array
+      this.countries = data[1];
     });
   }
 
   onCountrySelected(countryCode: string) {
-    // Adjust this according to the actual data structure of your API response
     this.countryApiService.getCountryInfo(countryCode).subscribe(data => {
-      this.selectedCountry = data;
+      console.log(data); // Add this line to inspect the structure of the data
+      // Update the following line according to the actual structure of the data
+      this.selectedCountry = data; // Adjust this line based on the structure you see in the console
     });
   }
+  
 }
