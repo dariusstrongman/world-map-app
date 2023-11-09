@@ -1,7 +1,5 @@
 <!-- svg-map.component.html -->
 <div class="svg-map-container">
-  <!-- This is a simple example. You would replace this with your actual SVG map code. -->
-  <!-- Make sure to bind click events to your paths that call the selectCountry method in your SvgMapComponent. -->
   <svg width="800" height="600">
     <!-- Example of a country path in the SVG. Repeat for other countries. -->
     <path
@@ -9,6 +7,7 @@
       [attr.d]="country.pathData"
       (click)="selectCountry(country.code)"
       [attr.fill]="country.color"
-    ></path>
+      [attr.id]="country.code">
+    </path>
   </svg>
 </div>

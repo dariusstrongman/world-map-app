@@ -9,7 +9,8 @@ import { CountryApiService } from './country-api.service';
         <app-svg-map [countries]="countries" (countrySelected)="onCountrySelected($event)"></app-svg-map>
       </div>
       <div class="column">
-        <app-country-info [country]="selectedCountry"></app-country-info>
+        <!-- Handle the case when selectedCountry is null -->
+        <app-country-info *ngIf="selectedCountry" [country]="selectedCountry"></app-country-info>
       </div>
     </div>
   `
@@ -17,19 +18,20 @@ import { CountryApiService } from './country-api.service';
 export class AppComponent implements OnInit {
   title = 'world-map-app';
   countries: any[] = [];
-  selectedCountry: any;
+  selectedCountry: any = null; // Initialize selectedCountry as null
 
   constructor(private countryApiService: CountryApiService) { }
 
   ngOnInit(): void {
-    // Fetch all countries on initialization
     this.countryApiService.getAllCountries().subscribe(
       (data: any) => {
-        // Assuming 'data' is the array of countries
-        this.countries = data;
+        // Check the structure of the data and assign accordingly
+        // For example, if the countries are in data.countries:
+        this.countries = data.countries || []; // Use a fallback to an empty array
       },
       error => {
         console.error('Error fetching countries:', error);
+        // Implement user feedback here
       }
     );
   }
@@ -37,13 +39,14 @@ export class AppComponent implements OnInit {
   onCountrySelected(countryCode: string) {
     this.countryApiService.getCountryInfo(countryCode).subscribe(
       (data: any) => {
-        // Assuming 'data' is the country object
-        this.selectedCountry = data;
+        // Check the structure of the data and assign accordingly
+        // For example, if the country info is in data.country:
+        this.selectedCountry = data.country || null; // Use a fallback to null
       },
       error => {
         console.error('Error fetching country info:', error);
+        // Implement user feedback here
       }
     );
   }
-  
 }

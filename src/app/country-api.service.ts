@@ -10,13 +10,17 @@ export class CountryApiService {
 
   constructor(private http: HttpClient) { }
 
+  // Method to fetch all countries
   getAllCountries(): Observable<any> {
-    const url = `${this.apiUrl}/?format=json`; // Append format=json query parameter
+    // You might need to adjust the URL based on the API's requirements
+    const url = `${this.apiUrl}/all?format=json`;
     return this.http.get(url);
   }
 
+  // Method to fetch detailed information for a selected country
   getCountryInfo(countryCode: string): Observable<any> {
-    const url = `${this.apiUrl}/${countryCode}?format=json`; // Append country code and format=json query parameter
+    // You might need to adjust the URL based on the API's requirements
+    const url = `${this.apiUrl}/${countryCode}?format=json`;
     return this.http.get(url);
   }
 }
