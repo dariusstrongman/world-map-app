@@ -1,14 +1,3 @@
-<!-- svg-map.component.html -->
-<div class="svg-map-container">
-  <svg width="800" height="600">
-    <!-- Example of a country path in the SVG. Repeat for other countries. -->
-    <path
-      *ngFor="let country of countries"
-      [attr.d]="country.pathData"
-      (click)="selectCountry(country.code)"
-      [attr.fill]="country.color"
-      [attr.id]="country.code">
-    </path>
-  </svg>
+<div class="svg-map-container" [innerHTML]="svgContent">
+  <!-- The SVG content will be rendered here -->
 </div>
-
