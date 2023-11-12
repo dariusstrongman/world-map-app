@@ -15,7 +15,6 @@ import { CountryApiService } from './country-api.service';
   `
 })
 export class AppComponent implements OnInit {
-  title = 'world-map-app';
   countries: any[] = [];
   selectedCountry: any = null;
 
@@ -23,23 +22,20 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.countryApiService.getAllCountries().subscribe(
-      (data: any) => {
-        this.countries = data.countries || [];
+      data => {
+        this.countries = data; // Assuming data is an array of countries
       },
-      error => {
-        console.error('Error fetching countries:', error);
-      }
+      error => console.error('Error fetching countries:', error)
     );
   }
 
-  onCountrySelected(countryCode: string) {
+  onCountrySelected(countryCode: string): void {
     this.countryApiService.getCountryInfo(countryCode).subscribe(
-      (data: any) => {
-        this.selectedCountry = data.country || null;
+      data => {
+        this.selectedCountry = data; // Assuming data is the country info
       },
-      error => {
-        console.error('Error fetching country info:', error);
-      }
+      error => console.error('Error fetching country info:', error)
     );
   }
 }
+
