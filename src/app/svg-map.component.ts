@@ -18,7 +18,7 @@ export class SvgMapComponent implements OnInit {
   }
 
   private loadSvgMap(): void {
-    this.http.get('assets/your-svg-map.svg', { responseType: 'text' })
+    this.http.get('assets/map.svg', { responseType: 'text' })
       .subscribe(svgData => {
         this.svgContent = this.sanitizer.bypassSecurityTrustHtml(svgData);
       }, error => {
@@ -34,7 +34,12 @@ export class SvgMapComponent implements OnInit {
   }
 
   private extractCountryCode(event: MouseEvent): string | null {
-    // TODO: Implement logic to extract country code from the clicked SVG element
+    // Implement logic to extract country code from the clicked SVG element
+    // This depends on how your SVG is structured
+    // Example:
+    // const target = event.target as SVGElement;
+    // return target.getAttribute('data-country-code');
     return null; // Replace with actual extraction logic
   }
 }
+
