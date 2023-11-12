@@ -1,10 +1,11 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-svg-map',
-  template: `<div [innerHTML]="svgContent" (click)="onMapClick($event)"></div>`
+  template: `<div [innerHTML]="svgContent" (click)="onMapClick($event)"></div>`,
+  styleUrls: ['./svg-map.component.css'] // Update the path if necessary
 })
 export class SvgMapComponent implements OnInit {
   @Input() countries: any[] = [];
@@ -14,9 +15,15 @@ export class SvgMapComponent implements OnInit {
   constructor(private http: HttpClient, private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
-    this.http.get('assets/SVG map.svg', { responseType: 'text' })
-      .subscribe(svg => {
-        this.svgContent = this.sanitizer.bypassSecurityTrustHtml(svg);
+    this.loadSvgMap();
+  }
+
+  private loadSvgMap(): void {
+    this.http.get('path/to/your/svg-map.svg', { responseType: 'text' })
+      .subscribe(svgData => {
+        this.svgContent = this.sanitizer.bypassSecurityTrustHtml(svgData);
+      }, error => {
+        console.error('Error loading SVG map:', error);
       });
   }
 
@@ -28,8 +35,8 @@ export class SvgMapComponent implements OnInit {
   }
 
   private extractCountryCode(event: MouseEvent): string | null {
-    // Logic to extract country code from the clicked SVG element
+    // Implement logic to extract country code from the clicked SVG element
     // This depends on how your SVG is structured
-    return null;
+    return null; // Replace with actual extraction logic
   }
 }
