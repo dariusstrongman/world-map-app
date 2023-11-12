@@ -7,7 +7,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
   template: `<div [innerHTML]="svgContent" (click)="onMapClick($event)"></div>`
 })
 export class SvgMapComponent implements OnInit {
-  @Input() countries: any[]; // Array of countries
+  @Input() countries: any[] = [];
   @Output() countrySelected = new EventEmitter<string>();
   svgContent: SafeHtml | null = null;
 
