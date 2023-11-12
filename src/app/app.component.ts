@@ -6,7 +6,7 @@ import { CountryApiService } from './country-api.service';
   template: `
     <div class="columns">
       <div class="column">
-        <app-svg-map [countries]="countries" (countrySelected)="onCountrySelected($event)"></app-svg-map>
+        <app-svg-map (countrySelected)="onCountrySelected($event)"></app-svg-map>
       </div>
       <div class="column">
         <app-country-info *ngIf="selectedCountry" [country]="selectedCountry"></app-country-info>
@@ -15,27 +15,29 @@ import { CountryApiService } from './country-api.service';
   `
 })
 export class AppComponent implements OnInit {
-  countries: any[] = [];
   selectedCountry: any = null;
+  title = 'world-map-app';
 
   constructor(private countryApiService: CountryApiService) { }
 
   ngOnInit(): void {
+    // If you need to fetch all countries at the start, uncomment the following:
+    /*
     this.countryApiService.getAllCountries().subscribe(
       data => {
-        this.countries = data; // Assuming data is an array of countries
+        // Process the data as needed
       },
       error => console.error('Error fetching countries:', error)
     );
+    */
   }
 
   onCountrySelected(countryCode: string): void {
     this.countryApiService.getCountryInfo(countryCode).subscribe(
       data => {
-        this.selectedCountry = data; // Assuming data is the country info
+        this.selectedCountry = data; // Adjust based on the actual data structure
       },
       error => console.error('Error fetching country info:', error)
     );
   }
 }
-
