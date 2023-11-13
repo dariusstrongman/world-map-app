@@ -42,3 +42,4 @@ export class SvgMapComponent implements OnInit {
     return null; // Replace with actual extraction logic
   }
 }
+

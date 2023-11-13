@@ -18,4 +18,3 @@ export class CountryApiService {
     return this.http.get(`${this.apiUrl}/${countryCode}?format=json`);
   }
 }
-
