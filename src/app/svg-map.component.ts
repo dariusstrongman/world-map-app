@@ -18,7 +18,7 @@ export class SvgMapComponent implements OnInit {
   }
 
   private loadSvgMap(): void {
-    this.http.get('assets/map.svg', { responseType: 'text' })
+    this.http.get('assets/map2.svg', { responseType: 'text' })
       .subscribe(svgData => {
         this.svgContent = this.sanitizer.bypassSecurityTrustHtml(svgData);
       }, error => {
